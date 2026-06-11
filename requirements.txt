@@ -2,3 +2,6 @@ fastapi
 uvicorn
 transformers
 torch
+pydantic
+safetensors
+huggingface_hub
