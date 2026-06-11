@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Quora Duplicate Detector</h1>
+
+    <input id="q1" placeholder="Question 1">
+    <input id="q2" placeholder="Question 2">
+
+    <button onclick="predict()">Predict</button>
+
+    <p id="result"></p>
+
+    <script>
+    async function predict() {
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ques1: document.getElementById("q1").value,
+                ques2: document.getElementById("q2").value
+            })
+        });
+
+        const data = await response.json();
+        document.getElementById("result").innerText =
+            JSON.stringify(data);
+    }
+    </script>
+</body>
+</html>
